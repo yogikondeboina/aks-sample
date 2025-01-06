@@ -17,21 +17,21 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v2
       with:
-        terraform_version: 1.5.7  # Update with your preferred version
-        #cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+        terraform_version: 1.5.7
 
     - name: Log in to Azure
       uses: azure/login@v1
       with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+        client-id: "06669e49-8fc9-4a16-9a85-8c34de5983a8"
+        tenant-id: "101eefa3-d016-48a7-9c7b-9a0faaad256e"
+        subscription-id: "6875b4d8-83ef-4662-88a9-7d8cba54ffdf"
+        client-secret: "82258baf-11fd-4cf1-9b38-3251fbad277c"
 
     - name: Terraform Init
       run: terraform init
 
     - name: Terraform Plan
+      id: terraform_plan
       run: terraform plan -out=tfplan
 
     - name: Terraform Apply
